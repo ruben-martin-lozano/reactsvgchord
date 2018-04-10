@@ -1,0 +1,79 @@
+.sb-Chord {
+  & {
+    display: block;
+  }
+
+  &Name {
+    font-size: 3em;
+    font-weight: bold;
+    user-select: none;
+  }
+
+  &FretReference {
+    fill: $c-white;
+    font-size: 1.2em;
+    font-style: italic;
+    font-weight: bold;
+    user-select: none;
+  }
+
+  &StringMutted {
+    stroke: $c-primary-main;
+  }
+
+  &FretBoard,
+  &Nut {
+    fill: $c-primary-main;
+  }
+
+  &Markers,
+  &Name {
+    fill: $c-primary-dark;
+  }
+
+  &:hover {
+    .sb-ChordFretBoard,
+    .sb-ChordNut {
+      fill: $c-secondary-light;
+    }
+
+    .sb-ChordMarkers,
+    .sb-ChordName {
+      fill: $c-secondary-main;
+    }
+
+    .sb-ChordStringMutted {
+      stroke: $c-secondary-light;
+    }
+  }
+
+  &--inverse {
+    .sb-ChordFretReference {
+      fill: $c-primary-main;
+    }
+
+    .sb-ChordFretBoard,
+    .sb-ChordNut,
+    .sb-ChordMarkers,
+    .sb-ChordName {
+      fill: $c-white;
+    }
+
+    .sb-ChordStringMutted {
+      stroke: $c-white;
+    }
+
+    &:hover {
+      .sb-ChordFretBoard,
+      .sb-ChordNut,
+      .sb-ChordMarkers,
+      .sb-ChordName {
+        fill: $c-white;
+      }
+
+      .sb-ChordStringMutted {
+        stroke: $c-white;
+      }
+    }
+  }
+}
