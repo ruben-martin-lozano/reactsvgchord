@@ -36,6 +36,7 @@ build/Release
 node_modules/
 jspm_packages/
 public/
+dist/
 .cache/
 package-lock.json
 
