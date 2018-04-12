@@ -11,7 +11,7 @@
     "clean": "rimraf dist",
     "removemap": "rimraf dist/*.map",
     "fenix": "rimraf node_modules && npm i -s",
-    "start": "parcel demo/index.html --out-dir public",
+    "start": "parcel demo/index.html --out-dir public --open",
     "test": "echo \"Error: no test specified\" && exit 1",
     "yay": "npm run clean && npm run build && npm run removemap"
   },
