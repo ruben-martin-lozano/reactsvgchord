@@ -1,19 +1,19 @@
 {
-  "name": "ReactSvgChord",
-  "version": "1.0.0",
-  "description": "ReactSvgChord",
-  "private": true,
+  "name": "react-svg-chord",
+  "version": "0.1.0",
+  "description": "React Svg Chord Component",
   "main": "dist/",
   "scripts": {
     "build": "npm run build:js && npm run build:css",
-    "build:js": "parcel build src/index.jsx --no-source-maps --out-dir dist",
-    "build:css": "node-sass src/index.scss dist/index.css --output-style compressed",
+    "build:js": "babel src --out-dir dist",
+    "build:css": "node-sass src/index.scss dist/index.css",
     "clean": "rimraf dist",
-    "removemap": "rimraf dist/*.map",
     "fenix": "rimraf node_modules && npm i -s",
     "start": "parcel demo/index.html --out-dir public --open",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "yay": "npm run clean && npm run build && npm run removemap"
+    "prebuild": "npm run clean",
+    "prepublish": "npm run build && npm login",
+    "postpublish": "npm logout"
   },
   "repository": {
     "type": "git",
@@ -24,15 +24,17 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/ruben-martin-lozano/reactsvgchord#readme",
   "dependencies": {
-    "classnames": "2.2.5",
-    "react": "16.2.0",
-    "react-dom": "16.2.0"
+    "classnames": "2.2.5"
+  },
+  "peerDependencies": {
+    "react": "0.14 || 15 || 16"
   },
   "eslintConfig": {
     "extends": "./eslintrc.js"
   },
   "sasslintConfig": ".sass-lint.yml",
   "devDependencies": {
+    "babel-cli": "6.26.0",
     "babel-eslint": "8.2.2",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-preset-env": "1.6.1",
@@ -49,6 +51,8 @@
     "node-sass": "4.7.2",
     "normalize.css": "8.0.0",
     "parcel-bundler": "1.7.0",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
     "rimraf": "2.6.2",
     "sass-lint": "1.12.1"
   }
