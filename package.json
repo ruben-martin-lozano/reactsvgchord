@@ -12,7 +12,7 @@
     "start": "parcel demo/index.html --out-dir public --open",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "npm run clean",
-    "prepublish": "npm run build && npm login",
+    "prepublishOnly": "npm run build && npm login",
     "postpublish": "npm logout"
   },
   "repository": {
