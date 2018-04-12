@@ -1,33 +1,34 @@
-$c-white: #ffffff;
-$c-primary-dark: #00796b;
-$c-primary-main: #009688;
-$c-secondary-light: #f06292;
-$c-secondary-main: #ec407a;
-
 @import '../node_modules/normalize.css/normalize';
 @import '../src/index';
 
-$bg-color: #ffffff;
+$c-white: #ffffff;
+$c-black: #000000;
+$c-title: #ffffff;
+$c-inverse: #009688;
 
 html {
   overflow-x: hidden;
 }
 
 body {
-  background: $bg-color;
+  background: $c-white;
   font-family: 'Roboto', sans-serif;
 }
 
 h1 {
-  color: $c-primary-dark;
+  color: $c-inverse;
   font-size: 8vw;
   margin: 0;
   padding: 1em 1% 0;
   text-align: center;
+
+  &.demo-Default {
+    color: $c-black;
+  }
 }
 
 .demo-Inverse {
-  background: $c-primary-main;
+  background: $c-inverse;
 
   h1 {
     color: $c-white;

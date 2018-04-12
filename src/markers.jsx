@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const mutedValue = 'x'
 const fretReferenceHeight = 25
 
-const Markers = ({ frets, hasNut, height, leftHanded, lineDeflect, lineThick, markers, mutedStringHeight, radius, strings, xBase, yBase }) => {
+const Markers = ({ colors, frets, hasNut, height, leftHanded, lineDeflect, lineThick, markers, mutedStringHeight, radius, strings, xBase, yBase }) => {
   const markersHanded = !leftHanded ? markers : markers.slice().reverse()
   const fretReference = hasNut ? 0 : Math.min(...markers.filter(marker => marker > 0))
   const maxMarker = Math.max(...markers.filter(marker => marker >= 0))
@@ -27,6 +27,7 @@ const Markers = ({ frets, hasNut, height, leftHanded, lineDeflect, lineThick, ma
 
           components.push(
             <circle
+              fill={colors.marker}
               key={`mark${index}`}
               cx={cx}
               cy={cy}
@@ -36,7 +37,16 @@ const Markers = ({ frets, hasNut, height, leftHanded, lineDeflect, lineThick, ma
 
           if (fretReference && value === fretReference) {
             components.push(
-              <text key={`reference${index}`} className='sb-ChordFretReference' textAnchor='middle' x={cx - 2} y={cy + (fretReferenceHeight / 4)}>{fretReference}</text>
+              <text
+                key={`reference${index}`}
+                className='sb-ChordFretReference'
+                fill={colors.fretReference}
+                textAnchor='middle'
+                x={cx - 2}
+                y={cy + (fretReferenceHeight / 4)}
+              >
+                {fretReference}
+              </text>
             )
           }
         }
@@ -45,7 +55,7 @@ const Markers = ({ frets, hasNut, height, leftHanded, lineDeflect, lineThick, ma
         const mutedStringX2 = cx + mutedStringHalfHeight
 
         components.push(
-          <g className='sb-ChordStringMutted' key={`mute${index}`}>
+          <g className='sb-ChordStringMutted' key={`mute${index}`} stroke={colors.mutedString}>
             <line x1={mutedStringX1} y1={mutedStringY1} x2={mutedStringX2} y2={mutedStringY2} strokeWidth={lineThick} strokeLinecap='round' />
             <line x1={mutedStringX1} y1={mutedStringY2} x2={mutedStringX2} y2={mutedStringY1} strokeWidth={lineThick} strokeLinecap='round' />
           </g>
@@ -64,6 +74,11 @@ const Markers = ({ frets, hasNut, height, leftHanded, lineDeflect, lineThick, ma
 }
 
 Markers.propTypes = {
+  colors: PropTypes.shape({
+    marker: PropTypes.string.isRequired,
+    mutedString: PropTypes.string.isRequired,
+    fretReference: PropTypes.string.isRequired
+  }).isRequired,
   frets: PropTypes.number.isRequired,
   hasNut: PropTypes.bool.isRequired,
   height: PropTypes.number.isRequired,

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const FretBoard = ({ frets, height, lineThick, strings, width, xBase, yBase }) => {
+const FretBoard = ({ colors, frets, height, lineThick, strings, width, xBase, yBase }) => {
   const getComponents = () => {
     const components = []
     const stringHeight = height + lineThick
@@ -37,13 +37,16 @@ const FretBoard = ({ frets, height, lineThick, strings, width, xBase, yBase }) =
   }
 
   return (
-    <g className='sb-ChordFretBoard'>
+    <g className='sb-ChordFretBoard' fill={colors.fretBoard}>
       {getComponents()}
     </g>
   )
 }
 
 FretBoard.propTypes = {
+  colors: PropTypes.shape({
+    fretBoard: PropTypes.string.isRequired
+  }).isRequired,
   frets: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
   lineThick: PropTypes.number.isRequired,
