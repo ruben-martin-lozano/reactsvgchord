@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import cx from 'classnames'
 import ChordName from './chordName'
 import FretBoard from './fretBoard'
 import Markers from './markers'
@@ -31,9 +32,12 @@ const Chord = ({ inverse, leftHanded, chord, colors }) => {
     x: -radius + lineDeflect,
     y: nutY - chordNameHeight
   }
+  const baseClassName = cx('sb-Chord', {
+    'sb-Chord--inverse': inverse
+  })
 
   return (
-    <svg className='sb-Chord' viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}>
+    <svg className={baseClassName} viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}>
       <ChordName
         colors={colors}
         height={chordNameHeight}

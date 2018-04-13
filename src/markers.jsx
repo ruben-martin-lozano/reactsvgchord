@@ -27,6 +27,7 @@ const Markers = ({ colors, frets, hasNut, height, leftHanded, lineDeflect, lineT
 
           components.push(
             <circle
+              className='sb-ChordMaker'
               fill={colors.marker}
               key={`mark${index}`}
               cx={cx}
