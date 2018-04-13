@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ChordName from './chordName.jsx'
-import FretBoard from './fretBoard.jsx'
-import Markers from './markers.jsx'
-import Nut from './nut.jsx'
+import ChordName from './chordName'
+import FretBoard from './fretBoard'
+import Markers from './markers'
+import Nut from './nut'
 
 const fretBoardHeight = 220
 const fretBoardWidth = 150
