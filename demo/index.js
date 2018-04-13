@@ -44,7 +44,7 @@ const demo = (
     <ul>
       {ukuleleChords.map((chord, index) => (
         <li key={index}>
-          <Chord chord={chord} colors={colors} key={index} />
+          <Chord chord={chord} colors={colors} />
         </li>
       ))}
     </ul>
@@ -53,7 +53,7 @@ const demo = (
       <ul>
         {ukuleleChords.map((chord, index) => (
           <li key={index}>
-            <Chord chord={chord} colors={inverseColors} inverse key={index} />
+            <Chord chord={chord} colors={inverseColors} inverse />
           </li>
         ))}
       </ul>
@@ -62,7 +62,7 @@ const demo = (
     <ul>
       {ukuleleChords.map((chord, index) => (
         <li key={index}>
-          <Chord chord={chord} key={index} />
+          <Chord chord={chord} />
         </li>
       ))}
     </ul>
@@ -70,7 +70,7 @@ const demo = (
     <ul>
       {ukuleleChords.map((chord, index) => (
         <li key={index}>
-          <Chord chord={chord} colors={colors} leftHanded key={index} />
+          <Chord chord={chord} colors={colors} leftHanded />
         </li>
       ))}
     </ul>
@@ -79,7 +79,7 @@ const demo = (
       <ul>
         {ukuleleChords.map((chord, index) => (
           <li key={index}>
-            <Chord chord={chord} colors={inverseColors} inverse leftHanded key={index} />
+            <Chord chord={chord} colors={inverseColors} inverse leftHanded />
           </li>
         ))}
       </ul>
@@ -88,7 +88,7 @@ const demo = (
     <ul>
       {guitarChords.map((chord, index) => (
         <li key={index}>
-          <Chord chord={chord} colors={colors} key={index} />
+          <Chord chord={chord} colors={colors} />
         </li>
       ))}
     </ul>
@@ -97,7 +97,7 @@ const demo = (
       <ul>
         {guitarChords.map((chord, index) => (
           <li key={index}>
-            <Chord chord={chord} colors={inverseColors} inverse key={index} />
+            <Chord chord={chord} colors={inverseColors} inverse />
           </li>
         ))}
       </ul>
@@ -106,7 +106,7 @@ const demo = (
     <ul>
       {guitarChords.map((chord, index) => (
         <li key={index}>
-          <Chord chord={chord} colors={colors} leftHanded key={index} />
+          <Chord chord={chord} colors={colors} leftHanded />
         </li>
       ))}
     </ul>
@@ -115,7 +115,7 @@ const demo = (
       <ul>
         {guitarChords.map((chord, index) => (
           <li key={index}>
-            <Chord chord={chord} colors={inverseColors} inverse leftHanded key={index} />
+            <Chord chord={chord} colors={inverseColors} inverse leftHanded />
           </li>
         ))}
       </ul>
