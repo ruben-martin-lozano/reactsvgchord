@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const FretBoard = ({ colors, frets, height, lineThick, strings, width, xBase, yBase }) => {
+const FretBoard = ({ colors, height, lineThick, strings, totalFrets, width, xBase, yBase }) => {
   const getComponents = () => {
     const components = []
     const stringHeight = height + lineThick
     const fretWidth = width + lineThick - 2
 
     // Frets.
-    for (let i = 0; i <= frets; i++) {
+    for (let i = 0; i <= totalFrets; i++) {
       components.push(
         <rect
           key={`fret${i}`}
@@ -47,10 +47,10 @@ FretBoard.propTypes = {
   colors: PropTypes.shape({
     fretBoard: PropTypes.string.isRequired
   }).isRequired,
-  frets: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
   lineThick: PropTypes.number.isRequired,
   strings: PropTypes.number.isRequired,
+  totalFrets: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   xBase: PropTypes.number.isRequired,
   yBase: PropTypes.number.isRequired

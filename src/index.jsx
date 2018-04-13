@@ -9,20 +9,20 @@ import Nut from './nut'
 const fretBoardHeight = 220
 const fretBoardWidth = 150
 const lineThick = 4
-const frets = 4
+const totalFrets = 4
 
 const Chord = ({ inverse, leftHanded, chord, colors }) => {
-  const {name, markers} = chord
+  const {name, frets} = chord
 
-  if (!markers || !markers.length || !name) return null
+  if (!frets || !frets.length || !name) return null
 
-  const strings = markers.length
+  const strings = frets.length
   const xBase = fretBoardWidth / (strings - 1)
-  const yBase = fretBoardHeight / frets
+  const yBase = fretBoardHeight / totalFrets
   const radius = (fretBoardWidth / strings) / 2
   const lineDeflect = lineThick / 2
   const nutHeight = lineThick * 3
-  const hasNut = !markers.some(marker => marker > frets)
+  const hasNut = !frets.some(marker => marker > totalFrets)
   const nutY = -nutHeight + 1
   const chordNameHeight = 55
   const mutedStringHeight = 20
@@ -51,25 +51,25 @@ const Chord = ({ inverse, leftHanded, chord, colors }) => {
       />}
       <FretBoard
         colors={colors}
-        frets={frets}
         height={fretBoardHeight}
         lineThick={lineThick}
         strings={strings}
+        totalFrets={totalFrets}
         width={fretBoardWidth}
         xBase={xBase}
         yBase={yBase} />
       <Markers
         colors={colors}
-        frets={frets}
         hasNut={hasNut}
         height={fretBoardHeight}
         leftHanded={leftHanded}
         lineDeflect={lineDeflect}
         lineThick={lineThick}
-        markers={markers}
+        frets={frets}
         mutedStringHeight={mutedStringHeight}
         radius={radius}
         strings={strings}
+        totalFrets={totalFrets}
         xBase={xBase}
         yBase={yBase} />
     </svg>
@@ -84,16 +84,12 @@ Chord.defaultProps = {
     mutedString: '#000000',
     nut: '#000000',
     fretReference: '#ffffff'
-  }
+  },
+  inverse: false,
+  leftHanded: false
 }
 
 Chord.propTypes = {
-  inverse: PropTypes.bool,
-  leftHanded: PropTypes.bool,
-  chord: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    markers: PropTypes.array.isRequired
-  }).isRequired,
   colors: PropTypes.shape({
     chordName: PropTypes.string.isRequired,
     fretBoard: PropTypes.string.isRequired,
@@ -101,7 +97,13 @@ Chord.propTypes = {
     mutedString: PropTypes.string.isRequired,
     nut: PropTypes.string.isRequired,
     fretReference: PropTypes.string.isRequired
-  })
+  }),
+  chord: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    frets: PropTypes.array.isRequired
+  }).isRequired,
+  inverse: PropTypes.bool,
+  leftHanded: PropTypes.bool
 }
 
 export default Chord

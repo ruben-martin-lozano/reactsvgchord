@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 const mutedValue = 'x'
 const fretReferenceHeight = 25
 
-const Markers = ({ colors, frets, hasNut, height, leftHanded, lineDeflect, lineThick, markers, mutedStringHeight, radius, strings, xBase, yBase }) => {
-  const markersHanded = !leftHanded ? markers : markers.slice().reverse()
-  const fretReference = hasNut ? 0 : Math.min(...markers.filter(marker => marker > 0))
-  const maxMarker = Math.max(...markers.filter(marker => marker >= 0))
-  const markerDeflect = hasNut ? 0 : maxMarker - frets
+const Markers = ({ colors, hasNut, height, leftHanded, lineDeflect, lineThick, frets, mutedStringHeight, radius, strings, totalFrets, xBase, yBase }) => {
+  const fretsHanded = !leftHanded ? frets : frets.slice().reverse()
+  const fretReference = hasNut ? 0 : Math.min(...frets.filter(marker => marker > 0))
+  const maxMarker = Math.max(...frets.filter(marker => marker >= 0))
+  const markerDeflect = hasNut ? 0 : maxMarker - totalFrets
   const mutedStringHalfHeight = mutedStringHeight / 2
   const mutedStringY1 = height - mutedStringHalfHeight + lineDeflect
   const mutedStringY2 = height + mutedStringHalfHeight + lineDeflect
@@ -16,7 +16,7 @@ const Markers = ({ colors, frets, hasNut, height, leftHanded, lineDeflect, lineT
   const getComponents = () => {
     const components = []
 
-    markersHanded.map((value, index) => {
+    fretsHanded.map((value, index) => {
       const cx = (xBase * index) + lineDeflect
 
       if (!isNaN(value)) {
@@ -80,16 +80,16 @@ Markers.propTypes = {
     mutedString: PropTypes.string.isRequired,
     fretReference: PropTypes.string.isRequired
   }).isRequired,
-  frets: PropTypes.number.isRequired,
   hasNut: PropTypes.bool.isRequired,
   height: PropTypes.number.isRequired,
   leftHanded: PropTypes.bool,
   lineDeflect: PropTypes.number.isRequired,
   lineThick: PropTypes.number.isRequired,
-  markers: PropTypes.array.isRequired,
+  frets: PropTypes.array.isRequired,
   mutedStringHeight: PropTypes.number.isRequired,
   radius: PropTypes.number.isRequired,
   strings: PropTypes.number.isRequired,
+  totalFrets: PropTypes.number.isRequired,
   xBase: PropTypes.number.isRequired,
   yBase: PropTypes.number.isRequired
 }
