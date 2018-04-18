@@ -1,6 +1,6 @@
 {
   "name": "react-svg-chord",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "React Svg Chord Component",
   "main": "dist/",
   "scripts": {
@@ -12,8 +12,7 @@
     "start": "parcel demo/index.html --out-dir public --open",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "npm run clean",
-    "prepublishOnly": "npm run build && npm login",
-    "postpublish": "npm logout"
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
