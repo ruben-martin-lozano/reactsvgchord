@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const mutedValue = 'x'
 const fretReferenceHeight = 25
 
-const Markers = ({ colors, hasNut, height, leftHanded, lineDeflect, lineThick, frets, mutedStringHeight, radius, strings, totalFrets, xBase, yBase }) => {
+const Markers = ({ hasNut, height, leftHanded, lineDeflect, lineThick, frets, mutedStringHeight, radius, strings, totalFrets, xBase, yBase }) => {
   const fretsHanded = !leftHanded ? frets : frets.slice().reverse()
   const fretReference = hasNut ? 0 : Math.min(...frets.filter(marker => marker > 0))
   const maxMarker = Math.max(...frets.filter(marker => marker >= 0))
@@ -28,7 +28,6 @@ const Markers = ({ colors, hasNut, height, leftHanded, lineDeflect, lineThick, f
           components.push(
             <circle
               className='sb-ChordMarker'
-              fill={colors.marker}
               key={`mark${index}`}
               cx={cx}
               cy={cy}
@@ -41,7 +40,7 @@ const Markers = ({ colors, hasNut, height, leftHanded, lineDeflect, lineThick, f
               <text
                 key={`reference${index}`}
                 className='sb-ChordFretReference'
-                fill={colors.fretReference}
+                fill='white'
                 textAnchor='middle'
                 x={cx - 2}
                 y={cy + (fretReferenceHeight / 4)}
@@ -56,7 +55,7 @@ const Markers = ({ colors, hasNut, height, leftHanded, lineDeflect, lineThick, f
         const mutedStringX2 = cx + mutedStringHalfHeight
 
         components.push(
-          <g className='sb-ChordStringMutted' key={`mute${index}`} stroke={colors.mutedString}>
+          <g className='sb-ChordStringMutted' key={`mute${index}`}>
             <line x1={mutedStringX1} y1={mutedStringY1} x2={mutedStringX2} y2={mutedStringY2} strokeWidth={lineThick} strokeLinecap='round' />
             <line x1={mutedStringX1} y1={mutedStringY2} x2={mutedStringX2} y2={mutedStringY1} strokeWidth={lineThick} strokeLinecap='round' />
           </g>
@@ -75,11 +74,6 @@ const Markers = ({ colors, hasNut, height, leftHanded, lineDeflect, lineThick, f
 }
 
 Markers.propTypes = {
-  colors: PropTypes.shape({
-    marker: PropTypes.string.isRequired,
-    mutedString: PropTypes.string.isRequired,
-    fretReference: PropTypes.string.isRequired
-  }).isRequired,
   hasNut: PropTypes.bool.isRequired,
   height: PropTypes.number.isRequired,
   leftHanded: PropTypes.bool,

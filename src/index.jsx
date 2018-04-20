@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import cx from 'classnames'
 import ChordName from './chordName'
 import FretBoard from './fretBoard'
 import Markers from './markers'
@@ -8,10 +7,8 @@ import Nut from './nut'
 
 const fretBoardHeight = 220
 const fretBoardWidth = 150
-const lineThick = 4
-const totalFrets = 4
 
-const Chord = ({ inverse, leftHanded, chord, colors }) => {
+const Chord = ({ chord, leftHanded, lineThick, totalFrets }) => {
   const {name, frets} = chord
 
   if (!frets || !frets.length || !name) return null
@@ -32,25 +29,19 @@ const Chord = ({ inverse, leftHanded, chord, colors }) => {
     x: -radius + lineDeflect,
     y: nutY - chordNameHeight
   }
-  const baseClassName = cx('sb-Chord', {
-    'sb-Chord--inverse': inverse
-  })
 
   return (
-    <svg className={baseClassName} viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}>
+    <svg className='sb-Chord' viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}>
       <ChordName
-        colors={colors}
         height={chordNameHeight}
         name={name}
         viewBox={viewBox} />
       {hasNut && <Nut
-        colors={colors}
         lineThick={lineThick}
         nutHeight={nutHeight}
         width={fretBoardWidth}
       />}
       <FretBoard
-        colors={colors}
         height={fretBoardHeight}
         lineThick={lineThick}
         strings={strings}
@@ -59,7 +50,6 @@ const Chord = ({ inverse, leftHanded, chord, colors }) => {
         xBase={xBase}
         yBase={yBase} />
       <Markers
-        colors={colors}
         hasNut={hasNut}
         height={fretBoardHeight}
         leftHanded={leftHanded}
@@ -77,33 +67,19 @@ const Chord = ({ inverse, leftHanded, chord, colors }) => {
 }
 
 Chord.defaultProps = {
-  colors: {
-    chordName: '#000000',
-    fretBoard: '#000000',
-    marker: '#000000',
-    mutedString: '#000000',
-    nut: '#000000',
-    fretReference: '#ffffff'
-  },
-  inverse: false,
-  leftHanded: false
+  leftHanded: false,
+  lineThick: 4,
+  totalFrets: 4
 }
 
 Chord.propTypes = {
-  colors: PropTypes.shape({
-    chordName: PropTypes.string.isRequired,
-    fretBoard: PropTypes.string.isRequired,
-    marker: PropTypes.string.isRequired,
-    mutedString: PropTypes.string.isRequired,
-    nut: PropTypes.string.isRequired,
-    fretReference: PropTypes.string.isRequired
-  }),
   chord: PropTypes.shape({
     name: PropTypes.string.isRequired,
     frets: PropTypes.array.isRequired
   }).isRequired,
-  inverse: PropTypes.bool,
-  leftHanded: PropTypes.bool
+  leftHanded: PropTypes.bool,
+  lineThick: PropTypes.number,
+  totalFrets: PropTypes.number
 }
 
 export default Chord

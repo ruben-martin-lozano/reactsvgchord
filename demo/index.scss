@@ -3,8 +3,7 @@
 
 $c-white: #ffffff;
 $c-black: #000000;
-$c-title: #ffffff;
-$c-inverse: #009688;
+$c-custom: #009688;
 
 html {
   overflow-x: hidden;
@@ -16,22 +15,35 @@ body {
 }
 
 h1 {
-  color: $c-inverse;
   font-size: 8vw;
   margin: 0;
   padding: 1em 1% 0;
   text-align: center;
+}
 
-  &.demo-Default {
-    color: $c-black;
+.demo-Custom {
+  h1 {
+    color: $c-custom;
+  }
+
+  svg {
+    fill: $c-custom;
   }
 }
 
 .demo-Inverse {
-  background: $c-inverse;
+  background: $c-custom;
 
   h1 {
     color: $c-white;
+  }
+
+  svg {
+    fill: $c-white;
+  }
+
+  .sb-ChordFretReference {
+    fill: $c-custom;
   }
 }
 

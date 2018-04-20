@@ -20,45 +20,9 @@ const guitarChords = [
   { name: 'F#', frets: ['x', 'x', 4, 3, 2, 2] }
 ]
 
-const colors = {
-  chordName: '#00796b',
-  fretBoard: '#009688',
-  marker: '#00796b',
-  mutedString: '#009688',
-  nut: '#009688',
-  fretReference: '#ffffff'
-}
-
-const inverseColors = {
-  chordName: '#ffffff',
-  fretBoard: '#ffffff',
-  marker: '#ffffff',
-  mutedString: '#ffffff',
-  nut: '#ffffff',
-  fretReference: '#009688'
-}
-
 const demo = (
   <Fragment>
-    <h1>Ukulele Chords</h1>
-    <ul>
-      {ukuleleChords.map((chord, index) => (
-        <li key={index}>
-          <Chord chord={chord} colors={colors} />
-        </li>
-      ))}
-    </ul>
-    <div className='demo-Inverse'>
-      <h1>Ukulele Chords (inverse)</h1>
-      <ul>
-        {ukuleleChords.map((chord, index) => (
-          <li key={index}>
-            <Chord chord={chord} colors={inverseColors} inverse />
-          </li>
-        ))}
-      </ul>
-    </div>
-    <h1 className='demo-Default'>Ukulele Chords (default colors)</h1>
+    <h1>Ukulele Chords (default)</h1>
     <ul>
       {ukuleleChords.map((chord, index) => (
         <li key={index}>
@@ -66,60 +30,58 @@ const demo = (
         </li>
       ))}
     </ul>
+    <div className='demo-Custom'>
+      <h1>Ukulele Chords (custom)</h1>
+      <ul>
+        {ukuleleChords.map((chord, index) => (
+          <li key={index}>
+            <Chord chord={chord} />
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div className='demo-Inverse'>
+      <h1>Ukulele Chords (custom)</h1>
+      <ul>
+        {ukuleleChords.map((chord, index) => (
+          <li key={index}>
+            <Chord chord={chord} />
+          </li>
+        ))}
+      </ul>
+    </div>
     <h1>Ukulele Chords (left handed)</h1>
     <ul>
       {ukuleleChords.map((chord, index) => (
         <li key={index}>
-          <Chord chord={chord} colors={colors} leftHanded />
+          <Chord chord={chord} leftHanded />
         </li>
       ))}
     </ul>
-    <div className='demo-Inverse'>
-      <h1>Ukulele Chords (inverse and left handed)</h1>
-      <ul>
-        {ukuleleChords.map((chord, index) => (
-          <li key={index}>
-            <Chord chord={chord} colors={inverseColors} inverse leftHanded />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <h1>Ukulele Chords (line thick)</h1>
+    <ul>
+      {ukuleleChords.map((chord, index) => (
+        <li key={index}>
+          <Chord chord={chord} lineThick={6} />
+        </li>
+      ))}
+    </ul>
+    <h1>Ukulele Chords (total frets)</h1>
+    <ul>
+      {ukuleleChords.map((chord, index) => (
+        <li key={index}>
+          <Chord chord={chord} totalFrets={5} />
+        </li>
+      ))}
+    </ul>
     <h1>Guitar Chords</h1>
     <ul>
       {guitarChords.map((chord, index) => (
         <li key={index}>
-          <Chord chord={chord} colors={colors} />
+          <Chord chord={chord} />
         </li>
       ))}
     </ul>
-    <div className='demo-Inverse'>
-      <h1>Guitar Chords (inverse)</h1>
-      <ul>
-        {guitarChords.map((chord, index) => (
-          <li key={index}>
-            <Chord chord={chord} colors={inverseColors} inverse />
-          </li>
-        ))}
-      </ul>
-    </div>
-    <h1>Guitar Chords (left handed)</h1>
-    <ul>
-      {guitarChords.map((chord, index) => (
-        <li key={index}>
-          <Chord chord={chord} colors={colors} leftHanded />
-        </li>
-      ))}
-    </ul>
-    <div className='demo-Inverse'>
-      <h1>Guitar Chords (inverse and left handed)</h1>
-      <ul>
-        {guitarChords.map((chord, index) => (
-          <li key={index}>
-            <Chord chord={chord} colors={inverseColors} inverse leftHanded />
-          </li>
-        ))}
-      </ul>
-    </div>
   </Fragment>
 )
 

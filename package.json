@@ -1,6 +1,6 @@
 {
   "name": "react-svg-chord",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "React Svg Chord Component",
   "main": "dist/",
   "scripts": {
@@ -51,8 +51,5 @@
     "react-dom": "16.2.0",
     "rimraf": "2.6.2",
     "sass-lint": "1.12.1"
-  },
-  "dependencies": {
-    "classnames": "2.2.5"
   }
 }
