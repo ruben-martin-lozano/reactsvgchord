@@ -28,6 +28,10 @@ h1 {
   svg {
     fill: $c-custom;
   }
+
+  .sb-ChordStringMutted line {
+    stroke: $c-custom;
+  }
 }
 
 .demo-Inverse {
@@ -43,6 +47,10 @@ h1 {
 
   .sb-ChordFretReference {
     fill: $c-custom;
+  }
+
+  .sb-ChordStringMutted line {
+    stroke: $c-white;
   }
 }
 

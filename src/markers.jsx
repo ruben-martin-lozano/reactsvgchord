@@ -56,8 +56,8 @@ const Markers = ({ hasNut, height, leftHanded, lineDeflect, lineThick, frets, mu
 
         components.push(
           <g className='sb-ChordStringMutted' key={`mute${index}`}>
-            <line x1={mutedStringX1} y1={mutedStringY1} x2={mutedStringX2} y2={mutedStringY2} strokeWidth={lineThick} strokeLinecap='round' />
-            <line x1={mutedStringX1} y1={mutedStringY2} x2={mutedStringX2} y2={mutedStringY1} strokeWidth={lineThick} strokeLinecap='round' />
+            <line stroke='#000000' x1={mutedStringX1} y1={mutedStringY1} x2={mutedStringX2} y2={mutedStringY2} strokeWidth={lineThick} strokeLinecap='round' />
+            <line stroke='#000000' x1={mutedStringX1} y1={mutedStringY2} x2={mutedStringX2} y2={mutedStringY1} strokeWidth={lineThick} strokeLinecap='round' />
           </g>
         )
       }
