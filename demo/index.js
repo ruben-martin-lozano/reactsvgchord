@@ -3,21 +3,21 @@ import ReactDOM from 'react-dom'
 import Chord from '../src/index.jsx'
 
 const ukuleleChords = [
-  { name: 'E7', frets: [1, 2, 0, 2] },
-  { name: 'Bb', frets: [3, 2, 1, 1] },
-  { name: 'D7', frets: [2, 2, 2, 3] },
-  { name: 'Am7', frets: [0, 0, 0, 0] },
-  { name: 'E', frets: [9, 8, 7, 7] },
-  { name: 'Am', frets: ['x', 4, 5, 3] }
+  { name: 'E7', positions: [[1, 2, 0, 2], [0, 3, 1, 2], [9, 8, 8, 7]] },
+  { name: 'Bb', positions: [[3, 2, 1, 1]] },
+  { name: 'D7', positions: [[2, 2, 2, 3]] },
+  { name: 'Am7', positions: [[0, 0, 0, 0]] },
+  { name: 'E', positions: [[9, 8, 7, 7]] },
+  { name: 'Am', positions: [['x', 4, 5, 3]] }
 ]
 
 const guitarChords = [
-  { name: 'A', frets: ['x', 0, 2, 2, 2, 0] },
-  { name: 'Bm', frets: ['x', 2, 4, 4, 3, 'x'] },
-  { name: 'D', frets: ['x', 5, 4, 2, 3, 2] },
-  { name: 'F', frets: ['x', 'x', 3, 2, 1, 1] },
-  { name: 'C', frets: ['x', 3, 2, 0, 1, 0] },
-  { name: 'F#', frets: ['x', 'x', 4, 3, 2, 2] }
+  { name: 'A', positions: [['x', 0, 2, 2, 2, 0]] },
+  { name: 'Bm', positions: [['x', 2, 4, 4, 3, 'x']] },
+  { name: 'D', positions: [['x', 5, 4, 2, 3, 2]] },
+  { name: 'F', positions: [['x', 'x', 3, 2, 1, 1]] },
+  { name: 'C', positions: [['x', 3, 2, 0, 1, 0]] },
+  { name: 'F#', positions: [['x', 'x', 4, 3, 2, 2]] }
 ]
 
 const demo = (
