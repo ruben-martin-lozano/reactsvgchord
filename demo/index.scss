@@ -20,7 +20,7 @@ h1 {
   text-align: center;
 }
 
-.demo-Custom {
+.DemoCustom {
   h1 {
     color: $c-custom;
   }
@@ -29,12 +29,12 @@ h1 {
     fill: $c-custom;
   }
 
-  .sb-ChordStringMutted line {
+  .ChordStringMutted line {
     stroke: $c-custom;
   }
 }
 
-.demo-Inverse {
+.DemoInverse {
   background: $c-custom;
 
   h1 {
@@ -45,11 +45,11 @@ h1 {
     fill: $c-white;
   }
 
-  .sb-ChordFretReference {
+  .ChordFretReference {
     fill: $c-custom;
   }
 
-  .sb-ChordStringMutted line {
+  .ChordStringMutted line {
     stroke: $c-white;
   }
 }

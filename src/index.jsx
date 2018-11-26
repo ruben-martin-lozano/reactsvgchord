@@ -65,7 +65,7 @@ class Chord extends Component {
     }
 
     return (
-      <svg className='sb-Chord' onClick={this.onChordClick} viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}>
+      <svg className='Chord' onClick={this.onChordClick} viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}>
         <ChordName
           height={chordNameHeight}
           name={name}

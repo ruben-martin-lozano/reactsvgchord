@@ -6,7 +6,7 @@ const Nut = ({ lineThick, nutHeight, width }) => {
 
   return (
     <rect
-      className='sb-ChordNut'
+      className='ChordNut'
       height={nutHeight}
       width={width + lineThick}
       x={0}

@@ -7,7 +7,7 @@ const ChordName = ({ height, name, viewBox }) => {
 
   return (
     <text
-      className='sb-ChordName'
+      className='ChordName'
       textAnchor='middle'
       x={chordNameX}
       y={chordNameY}

@@ -27,7 +27,7 @@ const Markers = ({ hasNut, height, leftHanded, lineDeflect, lineThick, frets, mu
 
           components.push(
             <circle
-              className='sb-ChordMarker'
+              className='ChordMarker'
               key={`mark${index}`}
               cx={cx}
               cy={cy}
@@ -39,7 +39,7 @@ const Markers = ({ hasNut, height, leftHanded, lineDeflect, lineThick, frets, mu
             components.push(
               <text
                 key={`reference${index}`}
-                className='sb-ChordFretReference'
+                className='ChordFretReference'
                 fill='white'
                 textAnchor='middle'
                 x={cx - 2}
@@ -55,7 +55,7 @@ const Markers = ({ hasNut, height, leftHanded, lineDeflect, lineThick, frets, mu
         const mutedStringX2 = cx + mutedStringHalfHeight
 
         components.push(
-          <g className='sb-ChordStringMutted' key={`mute${index}`}>
+          <g className='ChordStringMutted' key={`mute${index}`}>
             <line stroke='#000000' x1={mutedStringX1} y1={mutedStringY1} x2={mutedStringX2} y2={mutedStringY2} strokeWidth={lineThick} strokeLinecap='round' />
             <line stroke='#000000' x1={mutedStringX1} y1={mutedStringY2} x2={mutedStringX2} y2={mutedStringY1} strokeWidth={lineThick} strokeLinecap='round' />
           </g>
@@ -67,7 +67,7 @@ const Markers = ({ hasNut, height, leftHanded, lineDeflect, lineThick, frets, mu
   }
 
   return (
-    <g className='sb-ChordMarkers'>
+    <g className='ChordMarkers'>
       {getComponents()}
     </g>
   )

@@ -30,7 +30,7 @@ const demo = (
         </li>
       ))}
     </ul>
-    <div className='demo-Custom'>
+    <div className='DemoCustom'>
       <h1>Ukulele Chords (custom)</h1>
       <ul>
         {ukuleleChords.map((chord, index) => (
@@ -40,7 +40,7 @@ const demo = (
         ))}
       </ul>
     </div>
-    <div className='demo-Inverse'>
+    <div className='DemoInverse'>
       <h1>Ukulele Chords (custom)</h1>
       <ul>
         {ukuleleChords.map((chord, index) => (

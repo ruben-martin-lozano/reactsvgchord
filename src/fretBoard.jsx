@@ -37,7 +37,7 @@ const FretBoard = ({ height, lineThick, strings, totalFrets, width, xBase, yBase
   }
 
   return (
-    <g className='sb-ChordFretBoard'>
+    <g className='ChordFretBoard'>
       {getComponents()}
     </g>
   )
