@@ -1,6 +1,6 @@
 {
   "name": "react-svg-chord",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React Svg Chord Component",
   "main": "dist/",
   "scripts": {
@@ -8,7 +8,7 @@
     "build:js": "babel src --out-dir dist",
     "build:css": "node-sass src/index.scss dist/index.css",
     "clean": "rimraf dist",
-    "fenix": "rimraf node_modules && npm i -s",
+    "fenix": "rimraf package-lock.json && rimraf node_modules && npm i -s --prefer-online",
     "start": "parcel demo/index.html --out-dir public --open",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "npm run clean",
@@ -23,7 +23,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/ruben-martin-lozano/reactsvgchord#readme",
   "peerDependencies": {
-    "react": "0.14 || 15 || 16"
+    "react": "16"
   },
   "eslintConfig": {
     "extends": "./eslintrc.js"
@@ -47,8 +47,8 @@
     "node-sass": "4.7.2",
     "normalize.css": "8.0.0",
     "parcel-bundler": "1.7.0",
-    "react": "16.2.0",
-    "react-dom": "16.2.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
     "rimraf": "2.6.2",
     "sass-lint": "1.12.1"
   }
