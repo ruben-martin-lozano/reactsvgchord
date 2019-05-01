@@ -8,7 +8,7 @@ import Nut from './nut'
 const fretBoardHeight = 220
 const fretBoardWidth = 150
 
-const Chord = ({chord, leftHanded = false, lineThick = 4, totalFrets = 4}) => {
+const Chord = ({chord, hideName = false, leftHanded = false, lineThick = 4, totalFrets = 4}) => {
   const {name, positions} = chord
 
   if (!positions || !positions.length || !name) return null
@@ -30,7 +30,7 @@ const Chord = ({chord, leftHanded = false, lineThick = 4, totalFrets = 4}) => {
   const nutHeight = lineThick * 3
   const hasNut = !frets.some(marker => marker > totalFrets)
   const nutY = -nutHeight + 1
-  const chordNameHeight = 55
+  const chordNameHeight = !hideName ? 55 : 0
   const mutedStringHeight = 20
   const viewBox = {
     height: fretBoardHeight + nutHeight + chordNameHeight + (mutedStringHeight / 2) + lineThick - 1,
@@ -41,10 +41,10 @@ const Chord = ({chord, leftHanded = false, lineThick = 4, totalFrets = 4}) => {
 
   return (
     <svg className='Chord' onClick={onChordClick} viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}>
-      <ChordName
+      {!hideName && <ChordName
         height={chordNameHeight}
         name={name}
-        viewBox={viewBox} />
+        viewBox={viewBox} />}
       {hasNut && <Nut
         lineThick={lineThick}
         nutHeight={nutHeight}
@@ -80,6 +80,7 @@ Chord.propTypes = {
     name: PropTypes.string.isRequired,
     positions: PropTypes.array.isRequired
   }).isRequired,
+  hideName: PropTypes.bool,
   leftHanded: PropTypes.bool,
   lineThick: PropTypes.number,
   totalFrets: PropTypes.number
