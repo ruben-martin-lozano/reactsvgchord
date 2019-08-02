@@ -29,7 +29,7 @@ h1 {
     fill: $c-custom;
   }
 
-  .ChordStringMutted line {
+  line {
     stroke: $c-custom;
   }
 }
@@ -43,6 +43,10 @@ h1 {
 
   svg {
     fill: $c-white;
+  }
+
+  line {
+    stroke: $c-white;
   }
 
   .ChordFretReference {
@@ -71,7 +75,7 @@ ul {
   li {
     list-style: none;
     margin: 0 1% 1em;
-    width: 48%;
+    width: 12%;
 
     @media (max-width: 801px) {
       width: 31.333%;
