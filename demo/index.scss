@@ -29,7 +29,7 @@ h1 {
     fill: $c-custom;
   }
 
-  .ChordStringMutted line {
+  line {
     stroke: $c-custom;
   }
 }
@@ -43,6 +43,10 @@ h1 {
 
   svg {
     fill: $c-white;
+  }
+
+  line {
+    stroke: $c-white;
   }
 
   .ChordFretReference {
