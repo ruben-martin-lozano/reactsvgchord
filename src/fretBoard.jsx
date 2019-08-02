@@ -1,34 +1,44 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const FretBoard = ({ height, lineThick, strings, totalFrets, width, xBase, yBase }) => {
+const FretBoard = ({ hasNut, height, lineThick, strings, totalFrets, width, xBase, yBase }) => {
   const getComponents = () => {
     const components = []
-    const stringHeight = height + lineThick
-    const fretWidth = width + lineThick - 2
+    const stringHeight = height + (lineThick / 2)
+    const fretWidth = width + (lineThick / 2)
 
     // Frets.
     for (let i = 0; i <= totalFrets; i++) {
+      const y = yBase * i + (lineThick / 2)
+
       components.push(
-        <rect
+        <line
           key={`fret${i}`}
-          x={1}
-          y={yBase * i}
-          width={fretWidth}
-          height={lineThick}
+          stroke='#000000'
+          x1={lineThick / 2 + 1}
+          x2={fretWidth - 1}
+          y1={y}
+          y2={y}
+          strokeWidth={lineThick}
+          strokeLinecap='round'
         />
       )
     }
 
-    // Strings.
     for (let i = 0; i < strings; i++) {
+      const x = (xBase * i) + (lineThick / 2)
+      const y1 = hasNut ? -lineThick : lineThick / 2
+
       components.push(
-        <rect
+        <line
           key={`string${i}`}
-          x={xBase * i}
-          y={0}
-          width={lineThick}
-          height={stringHeight}
+          stroke='#000000'
+          x1={x}
+          x2={x}
+          y1={y1}
+          y2={stringHeight}
+          strokeWidth={lineThick}
+          strokeLinecap='round'
         />
       )
     }
@@ -44,6 +54,7 @@ const FretBoard = ({ height, lineThick, strings, totalFrets, width, xBase, yBase
 }
 
 FretBoard.propTypes = {
+  hasNut: PropTypes.bool.isRequired,
   height: PropTypes.number.isRequired,
   lineThick: PropTypes.number.isRequired,
   strings: PropTypes.number.isRequired,

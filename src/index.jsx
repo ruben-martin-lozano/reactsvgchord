@@ -51,6 +51,7 @@ const Chord = ({chord, hideName = false, leftHanded = false, lineThick = 4, tota
         width={fretBoardWidth}
       />}
       <FretBoard
+        hasNut={hasNut}
         height={fretBoardHeight}
         lineThick={lineThick}
         strings={strings}

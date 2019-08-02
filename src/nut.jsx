@@ -2,15 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Nut = ({ lineThick, nutHeight, width }) => {
-  const nutY = -nutHeight + 1
-
   return (
-    <rect
-      className='ChordNut'
-      height={nutHeight}
-      width={width + lineThick}
-      x={0}
-      y={nutY}
+    <line
+      stroke='#000000'
+      y1={-lineThick}
+      y2={-lineThick}
+      x1={nutHeight / 2}
+      x2={width - (lineThick / 2)}
+      strokeWidth={nutHeight}
+      strokeLinecap='round'
     />
   )
 }
