@@ -10,11 +10,13 @@ const fretBoardWidth = 150
 const initialPosition = 0
 
 const Chord = ({chord, hideName = false, leftHanded = false, lineThick = 4, totalFrets = 4}) => {
-  const {name, positions} = chord
-
-  if (!positions || !positions.length || !name) return null
-
+  const {name, positions = []} = chord
   const [position, setPosition] = useState(initialPosition)
+  const frets = positions[position]
+
+  useEffect(() => setPosition(initialPosition), [chord])
+
+  if (!positions.length || !name || !frets) return null
 
   const onChordClick = () => {
     const newPosition = position !== (positions.length - 1) ? position + 1 : 0
@@ -22,7 +24,6 @@ const Chord = ({chord, hideName = false, leftHanded = false, lineThick = 4, tota
     position !== newPosition && setPosition(newPosition)
   }
 
-  const frets = positions[position]
   const strings = frets.length
   const xBase = fretBoardWidth / (strings - 1)
   const yBase = fretBoardHeight / totalFrets
@@ -39,8 +40,6 @@ const Chord = ({chord, hideName = false, leftHanded = false, lineThick = 4, tota
     x: -radius + lineDeflect,
     y: nutY - chordNameHeight
   }
-
-  useEffect(() => setPosition(initialPosition), [chord])
 
   return (
     <svg className='Chord' onClick={onChordClick} viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}>
