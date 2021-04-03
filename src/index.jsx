@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 import ChordName from './chordName'
 import FretBoard from './fretBoard'
@@ -7,13 +7,14 @@ import Nut from './nut'
 
 const fretBoardHeight = 220
 const fretBoardWidth = 150
+const initialPosition = 0
 
 const Chord = ({chord, hideName = false, leftHanded = false, lineThick = 4, totalFrets = 4}) => {
   const {name, positions} = chord
 
   if (!positions || !positions.length || !name) return null
 
-  const [position, setPosition] = useState(0)
+  const [position, setPosition] = useState(initialPosition)
 
   const onChordClick = () => {
     const newPosition = position !== (positions.length - 1) ? position + 1 : 0
@@ -38,6 +39,8 @@ const Chord = ({chord, hideName = false, leftHanded = false, lineThick = 4, tota
     x: -radius + lineDeflect,
     y: nutY - chordNameHeight
   }
+
+  useEffect(() => setPosition(initialPosition), [chord])
 
   return (
     <svg className='Chord' onClick={onChordClick} viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}>
