@@ -16,12 +16,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://ruben-martin-lozano@bitbucket.org/ruben-martin-lozano/reactsvgchord.git"
+    "url": "git+https://github.com/ruben-martin-lozano/reactsvgchord.git"
   },
   "keywords": [],
   "author": "Rubén Martín Lozano",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/ruben-martin-lozano/reactsvgchord#readme",
+  "homepage": "https://github.com/ruben-martin-lozano/reactsvgchord#readme",
   "peerDependencies": {
     "react": "0.14 || 15 || 16 || 17"
   },
