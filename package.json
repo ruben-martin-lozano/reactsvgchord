@@ -1,6 +1,6 @@
 {
   "name": "react-svg-chord",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React Svg Chord Component",
   "main": "dist/",
   "scripts": {
