@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 const mutedValue = 'x'
 const fretReferenceHeight = 25
+const radiusReduction = .9
 
 const Markers = ({ hasNut, height, leftHanded, lineDeflect, lineThick, frets, mutedStringHeight, radius, strings, totalFrets, xBase, yBase }) => {
   const fretsHanded = !leftHanded ? frets : frets.slice().reverse()
@@ -31,7 +32,7 @@ const Markers = ({ hasNut, height, leftHanded, lineDeflect, lineThick, frets, mu
               key={`mark${index}`}
               cx={cx}
               cy={cy}
-              r={radius}
+              r={radius * radiusReduction}
             />
           )
 
