@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const ChordName = ({ height, name, viewBox }) => {
   const chordNameX = (viewBox.width / 2) + viewBox.x
@@ -15,12 +14,6 @@ const ChordName = ({ height, name, viewBox }) => {
       {name}
     </text>
   )
-}
-
-ChordName.propTypes = {
-  height: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  viewBox: PropTypes.object.isRequired
 }
 
 export default ChordName

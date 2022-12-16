@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import PropTypes from 'prop-types'
+import './index.scss'
 import ChordName from './chordName'
 import FretBoard from './fretBoard'
 import Markers from './markers'
@@ -76,17 +76,6 @@ const Chord = ({chord, hideName = false, leftHanded = false, lineThick = 4, tota
         yBase={yBase} />
     </svg>
   )
-}
-
-Chord.propTypes = {
-  chord: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    positions: PropTypes.array.isRequired
-  }).isRequired,
-  hideName: PropTypes.bool,
-  leftHanded: PropTypes.bool,
-  lineThick: PropTypes.number,
-  totalFrets: PropTypes.number
 }
 
 export default React.memo(Chord)

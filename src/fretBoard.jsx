@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const FretBoard = ({ hasNut, height, lineThick, strings, totalFrets, width, xBase, yBase }) => {
   const getComponents = () => {
@@ -51,17 +50,6 @@ const FretBoard = ({ hasNut, height, lineThick, strings, totalFrets, width, xBas
       {getComponents()}
     </g>
   )
-}
-
-FretBoard.propTypes = {
-  hasNut: PropTypes.bool.isRequired,
-  height: PropTypes.number.isRequired,
-  lineThick: PropTypes.number.isRequired,
-  strings: PropTypes.number.isRequired,
-  totalFrets: PropTypes.number.isRequired,
-  width: PropTypes.number.isRequired,
-  xBase: PropTypes.number.isRequired,
-  yBase: PropTypes.number.isRequired
 }
 
 export default FretBoard

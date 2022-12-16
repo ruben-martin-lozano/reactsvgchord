@@ -1,8 +1,8 @@
-@import '../node_modules/normalize.css/normalize';
 @import '../src/index';
 
-$c-white: #ffffff;
-$c-custom: #009688;
+$c-base: #333333;
+$c-white: #eeeeee;
+$c-custom: #ff6347;
 
 html {
   overflow-x: hidden;
@@ -10,14 +10,24 @@ html {
 
 body {
   background: $c-white;
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
+  margin: 0;
 }
 
 h1 {
+  color: $c-base;
   font-size: 8vw;
   margin: 0;
   padding: 1em 1% 0;
   text-align: center;
+}
+
+svg {
+  fill: $c-base;
+}
+
+line {
+  stroke: $c-base;
 }
 
 .DemoCustom {
@@ -79,10 +89,6 @@ ul {
 
     @media (max-width: 801px) {
       width: 31.333%;
-    }
-
-    @media (max-width: 481px) {
-      width: 23%;
     }
   }
 }

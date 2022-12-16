@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const mutedValue = 'x'
 const fretReferenceHeight = 25
@@ -72,21 +71,6 @@ const Markers = ({ hasNut, height, leftHanded, lineDeflect, lineThick, frets, mu
       {getComponents()}
     </g>
   )
-}
-
-Markers.propTypes = {
-  hasNut: PropTypes.bool.isRequired,
-  height: PropTypes.number.isRequired,
-  leftHanded: PropTypes.bool,
-  lineDeflect: PropTypes.number.isRequired,
-  lineThick: PropTypes.number.isRequired,
-  frets: PropTypes.array.isRequired,
-  mutedStringHeight: PropTypes.number.isRequired,
-  radius: PropTypes.number.isRequired,
-  strings: PropTypes.number.isRequired,
-  totalFrets: PropTypes.number.isRequired,
-  xBase: PropTypes.number.isRequired,
-  yBase: PropTypes.number.isRequired
 }
 
 export default Markers
