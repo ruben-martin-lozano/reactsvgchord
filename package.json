@@ -1,11 +1,12 @@
 {
   "name": "react-svg-chord",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "scripts": {
     "dev": "code . && parcel demo/index.html --open --port=1226",
     "fenix": "rimraf package-lock.json && rimraf node_modules && npm i -s --prefer-online --no-fund --no-audit"
   },
   "author": "Rubén Martín Lozano <ruben.martin.lozano@gmail.com>",
+  "files": ["index.*", "components/"],
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "2.8.2",
