@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import './index.scss'
-import ChordName from './chordName'
-import FretBoard from './fretBoard'
-import Markers from './markers'
-import Nut from './nut'
+import ChordName from './components/chordName'
+import FretBoard from './components/fretBoard'
+import Markers from './components/markers'
+import Nut from './components/nut'
 
 const fretBoardHeight = 220
 const fretBoardWidth = 150

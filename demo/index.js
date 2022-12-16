@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
-import Chord from '../src/index.jsx'
+import Chord from '../index.jsx'
 
 const ukuleleChords = [
   { name: 'E7', positions: [[1, 2, 0, 2], [0, 3, 1, 2], [9, 8, 8, 7]] },

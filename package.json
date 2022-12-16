@@ -1,6 +1,6 @@
 {
   "name": "react-svg-chord",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "scripts": {
     "dev": "code . && parcel demo/index.html --open --port=1226",
     "fenix": "rimraf package-lock.json && rimraf node_modules && npm i -s --prefer-online --no-fund --no-audit"
