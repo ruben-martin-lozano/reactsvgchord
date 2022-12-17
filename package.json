@@ -1,6 +1,6 @@
 {
   "name": "react-svg-chord",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "author": "Rubén Martín Lozano <ruben.martin.lozano@gmail.com>",
   "files": ["dist"],
   "license": "ISC",
@@ -15,7 +15,7 @@
   },
   "type": "module",
   "scripts": {
-    "build": "parcel build --no-source-maps",
+    "build": "parcel build --no-source-maps --no-optimize",
     "clean": "rimraf dist",
     "dev": "code . && parcel demo/index.html --open --port=1226",
     "fenix": "rimraf package-lock.json && rimraf node_modules && npm i -s --prefer-online --no-fund --no-audit",
