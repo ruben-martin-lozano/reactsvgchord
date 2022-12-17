@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import './index.scss'
-import ChordName from './components/chordName'
-import FretBoard from './components/fretBoard'
-import Markers from './components/markers'
-import Nut from './components/nut'
+import ChordName from './chordName'
+import FretBoard from './fretBoard'
+import Markers from './markers'
+import Nut from './nut'
 
 const fretBoardHeight = 220
 const fretBoardWidth = 150
@@ -16,7 +15,7 @@ const Chord = ({chord, hideName = false, leftHanded = false, lineThick = 4, tota
 
   useEffect(() => setPosition(initialPosition), [chord])
 
-  if (!positions.length || !name || !frets) return null
+  if (!positions.length || !name || !frets) return null
 
   const onChordClick = () => {
     const newPosition = position !== (positions.length - 1) ? position + 1 : 0

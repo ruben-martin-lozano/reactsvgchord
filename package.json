@@ -1,18 +1,35 @@
 {
   "name": "react-svg-chord",
-  "version": "1.0.14",
-  "scripts": {
-    "dev": "code . && parcel demo/index.html --open --port=1226",
-    "fenix": "rimraf package-lock.json && rimraf node_modules && npm i -s --prefer-online --no-fund --no-audit"
-  },
+  "version": "1.0.15",
   "author": "Rubén Martín Lozano <ruben.martin.lozano@gmail.com>",
-  "files": ["index.*", "components/"],
+  "files": ["dist"],
   "license": "ISC",
+  "main": "dist/index.js",
+  "targets": {
+    "main": {
+      "source": "src/index.jsx"
+    },
+    "css": {
+      "source": "src/index.scss"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "build": "parcel build --no-source-maps",
+    "clean": "rimraf dist",
+    "dev": "code . && parcel demo/index.html --open --port=1226",
+    "fenix": "rimraf package-lock.json && rimraf node_modules && npm i -s --prefer-online --no-fund --no-audit",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run build"
+  },
   "devDependencies": {
     "@parcel/transformer-sass": "2.8.2",
     "parcel": "2.8.2",
     "process": "0.11.10",
     "react": "18.2.0",
     "react-dom": "18.2.0"
+  },
+  "peerDependencies": {
+    "react": "0.14 || 15 || 16 || 17 || 18"
   }
 }
