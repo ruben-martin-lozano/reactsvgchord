@@ -1,10 +1,7 @@
 import React from 'react'
+import { settings } from './settings'
 
-const mutedValue = 'x'
-const fretReferenceHeight = 25
-const radiusReduction = .9
-
-const Markers = ({ hasNut, height, leftHanded, lineDeflect, lineThick, frets, mutedStringHeight, radius, strings, totalFrets, xBase, yBase }) => {
+const Markers = ({ hasNut, height, isSquared, leftHanded, lineDeflect, frets, mutedStringHeight, radius, strings, totalFrets, xBase, yBase }) => {
   const fretsHanded = !leftHanded ? frets : frets.slice().reverse()
   const fretReference = hasNut ? 0 : Math.min(...frets.filter(marker => marker > 0))
   const maxMarker = Math.max(...frets.filter(marker => marker >= 0))
@@ -14,6 +11,7 @@ const Markers = ({ hasNut, height, leftHanded, lineDeflect, lineThick, frets, mu
   const mutedStringY2 = height + mutedStringHalfHeight + lineDeflect
 
   const getComponents = () => {
+    const className = 'ChordMarker'
     const components = []
 
     fretsHanded.map((value, index) => {
@@ -24,14 +22,24 @@ const Markers = ({ hasNut, height, leftHanded, lineDeflect, lineThick, frets, mu
 
         if (markerValue > 0 && index < strings) {
           const cy = (markerValue * yBase) - (yBase / 2) + lineDeflect
+          const squareSide = radius * 2
+          const squareSideReduction = squareSide / 2
+          const markKey = `mark${index}`
 
           components.push(
-            <circle
-              className='ChordMarker'
-              key={`mark${index}`}
+            !isSquared ? <circle
+              className={className}
+              key={markKey}
               cx={cx}
               cy={cy}
-              r={radius * radiusReduction}
+              r={radius}
+            /> : <rect
+              className={className}
+              key={markKey}
+              x={cx - squareSideReduction}
+              y={cy - squareSideReduction}
+              height={squareSide}
+              width={squareSide}
             />
           )
 
@@ -40,24 +48,22 @@ const Markers = ({ hasNut, height, leftHanded, lineDeflect, lineThick, frets, mu
               <text
                 key={`reference${index}`}
                 className='ChordFretReference'
-                fill='white'
-                textAnchor='middle'
                 x={cx - 2}
-                y={cy + (fretReferenceHeight / 4)}
+                y={cy + (settings.fretReferenceHeight / 4)}
               >
                 {fretReference}
               </text>
             )
           }
         }
-      } else if (typeof value === 'string' && value.toLowerCase() === mutedValue) {
+      } else if (typeof value === 'string' && value.toLowerCase() === settings.mutedValue) {
         const mutedStringX1 = cx - mutedStringHalfHeight
         const mutedStringX2 = cx + mutedStringHalfHeight
 
         components.push(
           <g className='ChordStringMutted' key={`mute${index}`}>
-            <line stroke='#000000' x1={mutedStringX1} y1={mutedStringY1} x2={mutedStringX2} y2={mutedStringY2} strokeWidth={lineThick} strokeLinecap='round' />
-            <line stroke='#000000' x1={mutedStringX1} y1={mutedStringY2} x2={mutedStringX2} y2={mutedStringY1} strokeWidth={lineThick} strokeLinecap='round' />
+            <line x1={mutedStringX1} y1={mutedStringY1} x2={mutedStringX2} y2={mutedStringY2} />
+            <line x1={mutedStringX1} y1={mutedStringY2} x2={mutedStringX2} y2={mutedStringY1} />
           </g>
         )
       }
@@ -73,4 +79,4 @@ const Markers = ({ hasNut, height, leftHanded, lineDeflect, lineThick, frets, mu
   )
 }
 
-export default Markers
+export default React.memo(Markers)

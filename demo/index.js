@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import Chord from '../src/index.jsx'
 
 const ukuleleChords = [
@@ -10,7 +10,6 @@ const ukuleleChords = [
   { name: 'E', positions: [[9, 8, 7, 7]] },
   { name: 'Am', positions: [['x', 4, 5, 3]] }
 ]
-
 const guitarChords = [
   { name: 'A', positions: [['x', 0, 2, 2, 2, 0]] },
   { name: 'Bm', positions: [['x', 2, 4, 4, 3, 'x']] },
@@ -22,67 +21,42 @@ const guitarChords = [
 
 const demo = (
   <Fragment>
-    <h1>Ukulele Chords (default)</h1>
-    <ul>
-      {ukuleleChords.map((chord, index) => (
-        <li key={index}>
-          <Chord chord={chord} />
-        </li>
-      ))}
-    </ul>
-    <div className='DemoCustom'>
+    <section className='Demo'>
+      <h1>Ukulele Chords (default)</h1>
+      <ul>{ukuleleChords.map((chord, index) => <li key={index}><Chord chord={chord} /></li>)}</ul>
+    </section>
+    <section className='DemoCustom'>
       <h1>Ukulele Chords (custom)</h1>
-      <ul>
-        {ukuleleChords.map((chord, index) => (
-          <li key={index}>
-            <Chord chord={chord} />
-          </li>
-        ))}
-      </ul>
-    </div>
-    <div className='DemoInverse'>
+      <ul>{ukuleleChords.map((chord, index) => <li key={index}><Chord chord={chord} /></li>)}</ul>
+    </section>
+    <section className='DemoInverse'>
       <h1>Ukulele Chords (custom)</h1>
-      <ul>
-        {ukuleleChords.map((chord, index) => (
-          <li key={index}>
-            <Chord chord={chord} />
-          </li>
-        ))}
-      </ul>
-    </div>
-    <h1>Ukulele Chords (left handed)</h1>
-    <ul>
-      {ukuleleChords.map((chord, index) => (
-        <li key={index}>
-          <Chord chord={chord} leftHanded />
-        </li>
-      ))}
-    </ul>
-    <h1>Ukulele Chords (line thick)</h1>
-    <ul>
-      {ukuleleChords.map((chord, index) => (
-        <li key={index}>
-          <Chord chord={chord} lineThick={6} />
-        </li>
-      ))}
-    </ul>
-    <h1>Ukulele Chords (total frets)</h1>
-    <ul>
-      {ukuleleChords.map((chord, index) => (
-        <li key={index}>
-          <Chord chord={chord} totalFrets={5} />
-        </li>
-      ))}
-    </ul>
-    <h1>Guitar Chords</h1>
-    <ul>
-      {guitarChords.map((chord, index) => (
-        <li key={index}>
-          <Chord chord={chord} />
-        </li>
-      ))}
-    </ul>
+      <ul>{ukuleleChords.map((chord, index) => <li key={index}><Chord chord={chord} /></li>)}</ul>
+    </section>
+    <section className='Demo'>
+      <h1>Ukulele Chords (left handed)</h1>
+      <ul>{ukuleleChords.map((chord, index) => <li key={index}><Chord chord={chord} leftHanded /></li>)}</ul>
+    </section>
+    <section className='Demo'>
+      <h1>Ukulele Chords (squared)</h1>
+      <ul>{ukuleleChords.map((chord, index) => <li key={index}><Chord chord={chord} isSquared /></li>)}</ul>
+    </section>
+    <section className='Demo'>
+      <h1>Ukulele Chords (line thick)</h1>
+      <ul>{ukuleleChords.map((chord, index) => <li key={index}><Chord chord={chord} isThick /></li>)}</ul>
+    </section>
+    <section className='Demo'>
+      <h1>Ukulele Chords (total frets)</h1>
+      <ul>{ukuleleChords.map((chord, index) => <li key={index}><Chord chord={chord} totalFrets={5} /></li>)}</ul>
+    </section>
+    <section className='Demo'>
+      <h1>Guitar Chords</h1>
+      <ul>{guitarChords.map((chord, index) => <li key={index}><Chord chord={chord} /></li>)}</ul>
+    </section>
   </Fragment>
 )
 
-ReactDOM.render(demo, document.getElementById('demo'))
+const container = document.getElementById('demo')
+const root = createRoot(container)
+
+root.render(demo)

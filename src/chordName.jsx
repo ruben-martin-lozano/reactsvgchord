@@ -1,13 +1,13 @@
 import React from 'react'
 
 const ChordName = ({ height, name, viewBox }) => {
-  const chordNameX = (viewBox.width / 2) + viewBox.x
+  const {x, width} = viewBox
+  const chordNameX = (width / 2) + x
   const chordNameY = -height / 2
 
   return (
     <text
       className='ChordName'
-      textAnchor='middle'
       x={chordNameX}
       y={chordNameY}
     >
@@ -16,4 +16,4 @@ const ChordName = ({ height, name, viewBox }) => {
   )
 }
 
-export default ChordName
+export default React.memo(ChordName)

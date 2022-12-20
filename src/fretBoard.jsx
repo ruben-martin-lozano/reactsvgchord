@@ -1,43 +1,40 @@
 import React from 'react'
+import { settings } from './settings'
 
 const FretBoard = ({ hasNut, height, lineThick, strings, totalFrets, width, xBase, yBase }) => {
   const getComponents = () => {
     const components = []
-    const stringHeight = height + (lineThick / 2)
-    const fretWidth = width + (lineThick / 2)
+    const lineDeflect = lineThick / 2
+    const { fretBoardReduction } = settings
+    const stringHeight = height + lineDeflect - fretBoardReduction
+    const fretWidth = width + lineDeflect - fretBoardReduction
+    const x1 = lineDeflect + fretBoardReduction
+    const y1 = hasNut ? -lineThick - 1 : lineDeflect
 
-    // Frets.
     for (let i = 0; i <= totalFrets; i++) {
-      const y = yBase * i + (lineThick / 2)
+      const y = (yBase * i) + lineDeflect
 
       components.push(
         <line
           key={`fret${i}`}
-          stroke='#000000'
-          x1={lineThick / 2}
+          x1={x1}
           x2={fretWidth}
           y1={y}
           y2={y}
-          strokeWidth={lineThick}
-          strokeLinecap='round'
         />
       )
     }
 
     for (let i = 0; i < strings; i++) {
-      const x = (xBase * i) + (lineThick / 2)
-      const y1 = hasNut ? -lineThick - 1 : lineThick / 2
+      const x = (xBase * i) + lineDeflect
 
       components.push(
         <line
           key={`string${i}`}
-          stroke='#000000'
           x1={x}
           x2={x}
           y1={y1}
-          y2={stringHeight - 0.5}
-          strokeWidth={lineThick}
-          strokeLinecap='round'
+          y2={stringHeight}
         />
       )
     }
@@ -52,4 +49,4 @@ const FretBoard = ({ hasNut, height, lineThick, strings, totalFrets, width, xBas
   )
 }
 
-export default FretBoard
+export default React.memo(FretBoard)

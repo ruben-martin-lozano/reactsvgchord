@@ -1,17 +1,18 @@
 import React, {useEffect, useState} from 'react'
+import cx from 'classnames'
 import ChordName from './chordName'
 import FretBoard from './fretBoard'
 import Markers from './markers'
 import Nut from './nut'
+import { settings } from './settings'
 
-const fretBoardHeight = 220
-const fretBoardWidth = 150
-const initialPosition = 0
+const { fretBoardHeight, fretBoardWidth, initialPosition, nameHeight, circleDeflect, squareDeflect, mutedStringHeight, thinLine, thickLine } = settings
 
-const Chord = ({chord, hideName = false, leftHanded = false, lineThick = 4, totalFrets = 4}) => {
+const Chord = ({chord, isSquared = false, hideName = false, leftHanded = false, isThick = false, totalFrets = 4}) => {
   const {name, positions = []} = chord
   const [position, setPosition] = useState(initialPosition)
   const frets = positions[position]
+  const lineThick = !isThick ? thinLine : thickLine
 
   useEffect(() => setPosition(initialPosition), [chord])
 
@@ -31,21 +32,30 @@ const Chord = ({chord, hideName = false, leftHanded = false, lineThick = 4, tota
   const nutHeight = lineThick * 3
   const hasNut = !frets.some(marker => marker > totalFrets)
   const nutY = -nutHeight + 1
-  const chordNameHeight = !hideName ? 55 : 0
-  const mutedStringHeight = 20
+  const chordNameHeight = !hideName ? nameHeight : 0
   const viewBox = {
     height: fretBoardHeight + nutHeight + chordNameHeight + (mutedStringHeight / 2) + lineThick - 1,
     width: fretBoardWidth + (radius * 2) + (lineDeflect / 4),
     x: -radius + lineDeflect,
     y: nutY - chordNameHeight
   }
+  const className = cx('Chord', {
+    'Chord--squared': isSquared,
+    'Chord--thick': isThick
+  })
+  const parsedRadius = radius * (!isSquared ? circleDeflect : squareDeflect)
 
   return (
-    <svg className='Chord' onClick={onChordClick} viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}>
+    <svg
+      className={className}
+      onClick={onChordClick}
+      viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
+    >
       {!hideName && <ChordName
         height={chordNameHeight}
         name={name}
-        viewBox={viewBox} />}
+        viewBox={viewBox}
+      />}
       {hasNut && <Nut
         lineThick={lineThick}
         nutHeight={nutHeight}
@@ -59,20 +69,22 @@ const Chord = ({chord, hideName = false, leftHanded = false, lineThick = 4, tota
         totalFrets={totalFrets}
         width={fretBoardWidth}
         xBase={xBase}
-        yBase={yBase} />
+        yBase={yBase}
+      />
       <Markers
         hasNut={hasNut}
         height={fretBoardHeight}
+        isSquared={isSquared}
         leftHanded={leftHanded}
         lineDeflect={lineDeflect}
-        lineThick={lineThick}
         frets={frets}
         mutedStringHeight={mutedStringHeight}
-        radius={radius}
+        radius={parsedRadius}
         strings={strings}
         totalFrets={totalFrets}
         xBase={xBase}
-        yBase={yBase} />
+        yBase={yBase}
+      />
     </svg>
   )
 }

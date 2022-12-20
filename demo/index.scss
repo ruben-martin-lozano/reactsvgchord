@@ -1,33 +1,25 @@
 @import '../src/index';
 
-$c-base: #333333;
-$c-white: #eeeeee;
+$c-dark: #333;
+$c-light: #eee;
 $c-custom: #ff6347;
 
-html {
-  overflow-x: hidden;
+.Chord {
+  --c-chord: #{$c-dark};
+  --c-chord-hover: #{darken($c-dark, 25)};
 }
 
 body {
-  background: $c-white;
   font-family: sans-serif;
   margin: 0;
 }
 
 h1 {
-  color: $c-base;
+  color: $c-dark;
   font-size: 8vw;
   margin: 0;
-  padding: 1em 1% 0;
+  padding: 1em 0 0;
   text-align: center;
-}
-
-svg {
-  fill: $c-base;
-}
-
-line {
-  stroke: $c-base;
 }
 
 .DemoCustom {
@@ -35,12 +27,9 @@ line {
     color: $c-custom;
   }
 
-  svg {
-    fill: $c-custom;
-  }
-
-  line {
-    stroke: $c-custom;
+  .Chord {
+    --c-chord: #{$c-custom};
+    --c-chord-hover: #{darken($c-custom, 25)};
   }
 }
 
@@ -48,23 +37,13 @@ line {
   background: $c-custom;
 
   h1 {
-    color: $c-white;
+    color: $c-light;
   }
 
-  svg {
-    fill: $c-white;
-  }
-
-  line {
-    stroke: $c-white;
-  }
-
-  .ChordFretReference {
-    fill: $c-custom;
-  }
-
-  .ChordStringMutted line {
-    stroke: $c-white;
+  .Chord {
+    --c-chord: #{$c-light};
+    --c-chord-hover: #{darken($c-light, 25)};
+    --c-chord-reference: #{$c-custom};
   }
 }
 
@@ -74,12 +53,7 @@ ul {
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
-    padding: 2.5em 0 1.5em;
-
-    @media (max-width: 801px) {
-      padding-left: 1em;
-      padding-right: 1em;
-    }
+    padding: 1em;
   }
 
   li {

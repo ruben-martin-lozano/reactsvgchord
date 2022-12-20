@@ -1,18 +1,68 @@
 .Chord {
+  --c-chord:#000;
+  --c-chord-hover:#C00;
+  --c-chord-reference:#fff;
+
   & {
+    cursor: pointer;
     display: block;
+    fill: var(--c-chord);
+    width: 100%;
+
+    &:hover {
+      fill: var(--c-chord-hover);
+
+      line {
+        stroke: var(--c-chord-hover);
+      }
+    }
   }
 
   &Name {
     font-size: 3em;
     font-weight: bold;
+    text-anchor: middle;
     user-select: none;
   }
 
   &FretReference {
+    fill: var(--c-chord-reference);
     font-size: 1.2em;
     font-style: italic;
     font-weight: bold;
+    text-anchor: middle;
     user-select: none;
+  }
+
+  line {
+    stroke: var(--c-chord);
+    stroke-linecap: round;
+    stroke-width: 4;
+  }
+
+  &--squared {
+    line {
+      stroke-linecap: square;
+    }
+
+    rect {
+      transform-box: fill-box;
+      transform-origin: center;
+      transform: rotate(45deg);
+    }
+  }
+
+  &--thick {
+    line {
+      stroke-width: 6;
+    }
+
+    .ChordNut {
+      stroke-width: 18 !important;
+    }
+  }
+
+  &Nut {
+    stroke-width: 12 !important;
   }
 }
