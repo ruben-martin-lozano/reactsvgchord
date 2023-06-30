@@ -1,3 +1,4 @@
+@use 'sass:color';
 @import '../src/index';
 
 $c-dark: #333;
@@ -6,12 +7,13 @@ $c-custom: #ff6347;
 
 .Chord {
   --c-chord: #{$c-dark};
-  --c-chord-hover: #{darken($c-dark, 25)};
+  --c-chord-hover: #{color.adjust($c-dark, $lightness: -25%)};
 }
 
 body {
   font-family: sans-serif;
   margin: 0;
+  user-select: none;
 }
 
 h1 {
@@ -29,7 +31,7 @@ h1 {
 
   .Chord {
     --c-chord: #{$c-custom};
-    --c-chord-hover: #{darken($c-custom, 25)};
+    --c-chord-hover: #{color.adjust($c-custom, $lightness: -25%)};
   }
 }
 
@@ -42,19 +44,17 @@ h1 {
 
   .Chord {
     --c-chord: #{$c-light};
-    --c-chord-hover: #{darken($c-light, 25)};
+    --c-chord-hover: #{color.adjust($c-light, $lightness: -25%)};
     --c-chord-reference: #{$c-custom};
   }
 }
 
 ul {
-  & {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 1em;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 1em;
 
   li {
     list-style: none;

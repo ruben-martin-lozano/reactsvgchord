@@ -3,18 +3,16 @@
   --c-chord-hover:#C00;
   --c-chord-reference:#fff;
 
-  & {
-    cursor: pointer;
-    display: block;
-    fill: var(--c-chord);
-    width: 100%;
+  cursor: pointer;
+  display: block;
+  fill: var(--c-chord);
+  width: 100%;
 
-    &:hover {
-      fill: var(--c-chord-hover);
+  &:hover {
+    fill: var(--c-chord-hover);
 
-      line {
-        stroke: var(--c-chord-hover);
-      }
+    line {
+      stroke: var(--c-chord-hover);
     }
   }
 

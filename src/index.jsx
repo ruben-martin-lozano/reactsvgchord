@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import cx from 'classnames'
 import ChordName from './chordName'
 import FretBoard from './fretBoard'
@@ -6,10 +6,10 @@ import Markers from './markers'
 import Nut from './nut'
 import { settings } from './settings'
 
-const { fretBoardHeight, fretBoardWidth, initialPosition, nameHeight, circleDeflect, squareDeflect, mutedStringHeight, thinLine, thickLine } = settings
+const { styles, fretBoardHeight, fretBoardWidth, initialPosition, nameHeight, circleDeflect, squareDeflect, mutedStringHeight, thinLine, thickLine } = settings
 
-const Chord = ({chord, isSquared = false, hideName = false, leftHanded = false, isThick = false, totalFrets = 4}) => {
-  const {name, positions = []} = chord
+const Chord = ({ chord, hideName = false, isFile = false, isSquared = false, isThick = false, leftHanded = false, totalFrets = 4 }) => {
+  const { name, positions = [] } = chord
   const [position, setPosition] = useState(initialPosition)
   const frets = positions[position]
   const lineThick = !isThick ? thinLine : thickLine
@@ -18,11 +18,13 @@ const Chord = ({chord, isSquared = false, hideName = false, leftHanded = false, 
 
   if (!positions.length || !name || !frets) return null
 
-  const onChordClick = () => {
-    const newPosition = position !== (positions.length - 1) ? position + 1 : 0
+  const onChordClick = !isFile
+    ? () => {
+        const newPosition = position !== (positions.length - 1) ? position + 1 : 0
 
-    position !== newPosition && setPosition(newPosition)
-  }
+        position !== newPosition && setPosition(newPosition)
+      }
+    : null
 
   const strings = frets.length
   const xBase = fretBoardWidth / (strings - 1)
@@ -39,31 +41,42 @@ const Chord = ({chord, isSquared = false, hideName = false, leftHanded = false, 
     x: -radius + lineDeflect,
     y: nutY - chordNameHeight
   }
-  const className = cx('Chord', {
-    'Chord--squared': isSquared,
-    'Chord--thick': isThick
-  })
+  const className = !isFile
+    ? cx('Chord', {
+      'Chord--squared': isSquared,
+      'Chord--thick': isThick
+    })
+    : null
+  const fill = !isFile ? null : styles.defaultColor
+  const xmlns = !isFile ? null : 'http://www.w3.org/2000/svg'
   const parsedRadius = radius * (!isSquared ? circleDeflect : squareDeflect)
 
   return (
     <svg
       className={className}
+      fill={fill}
       onClick={onChordClick}
       viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
+      xmlns={xmlns}
     >
       {!hideName && <ChordName
         height={chordNameHeight}
+        isFile={isFile}
         name={name}
         viewBox={viewBox}
-      />}
+                    />}
       {hasNut && <Nut
+        isFile={isFile}
+        isSquared={isSquared}
         lineThick={lineThick}
         nutHeight={nutHeight}
         width={fretBoardWidth}
-      />}
+                 />}
       <FretBoard
         hasNut={hasNut}
         height={fretBoardHeight}
+        isFile={isFile}
+        isSquared={isSquared}
         lineThick={lineThick}
         strings={strings}
         totalFrets={totalFrets}
@@ -74,9 +87,11 @@ const Chord = ({chord, isSquared = false, hideName = false, leftHanded = false, 
       <Markers
         hasNut={hasNut}
         height={fretBoardHeight}
+        isFile={isFile}
         isSquared={isSquared}
         leftHanded={leftHanded}
         lineDeflect={lineDeflect}
+        lineThick={lineThick}
         frets={frets}
         mutedStringHeight={mutedStringHeight}
         radius={parsedRadius}

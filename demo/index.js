@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { createRoot } from 'react-dom/client'
 import Chord from '../src/index.jsx'
 
@@ -20,7 +20,7 @@ const guitarChords = [
 ]
 
 const demo = (
-  <Fragment>
+  <>
     <section className='Demo'>
       <h1>Ukulele Chords (default)</h1>
       <ul>{ukuleleChords.map((chord, index) => <li key={index}><Chord chord={chord} /></li>)}</ul>
@@ -46,6 +46,10 @@ const demo = (
       <ul>{ukuleleChords.map((chord, index) => <li key={index}><Chord chord={chord} isThick /></li>)}</ul>
     </section>
     <section className='Demo'>
+      <h1>Ukulele Chords (isFile)</h1>
+      <ul>{ukuleleChords.map((chord, index) => <li key={index}><Chord chord={chord} isFile /></li>)}</ul>
+    </section>
+    <section className='Demo'>
       <h1>Ukulele Chords (total frets)</h1>
       <ul>{ukuleleChords.map((chord, index) => <li key={index}><Chord chord={chord} totalFrets={5} /></li>)}</ul>
     </section>
@@ -53,7 +57,7 @@ const demo = (
       <h1>Guitar Chords</h1>
       <ul>{guitarChords.map((chord, index) => <li key={index}><Chord chord={chord} /></li>)}</ul>
     </section>
-  </Fragment>
+  </>
 )
 
 const container = document.getElementById('demo')

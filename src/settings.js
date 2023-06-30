@@ -7,8 +7,15 @@ const settings = {
   mutedStringHeight: 20,
   mutedValue: 'x',
   nameHeight: 55,
-  circleDeflect: .9,
-  squareDeflect: .7,
+  circleDeflect: 0.9,
+  squareDeflect: 0.7,
+  styles: {
+    defaultColor: '#000',
+    fontFamily: 'sans-serif',
+    fontWeight: 'bold',
+    inverseColor: '#FFF',
+    textAnchor: 'middle'
+  },
   thickLine: 6,
   thinLine: 4
 }

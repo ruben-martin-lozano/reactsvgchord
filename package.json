@@ -18,7 +18,9 @@
     "build": "parcel build --no-source-maps --no-optimize",
     "clean": "rimraf dist",
     "dev": "code . && parcel demo/index.html --open --port=1226",
-    "fenix": "rimraf package-lock.json && rimraf node_modules && npm i -s --prefer-online --no-fund --no-audit",
+    "fenix": "rimraf package-lock.json && rimraf node_modules && npm i -s --prefer-online --no-fund --no-audit && npm outdate",
+    "lint": "stylelint '**/*.scss' --fix && standard --fix",
+    "pre-commit": "npm run lint",
     "prebuild": "npm run clean",
     "prepublishOnly": "npm run build"
   },
@@ -26,11 +28,14 @@
     "classnames": "2.3.2"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "2.8.2",
-    "parcel": "2.8.2",
+    "@parcel/transformer-sass": "2.9.3",
+    "parcel": "2.9.3",
     "process": "0.11.10",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "standard": "17.1.0",
+    "stylelint-config-sass-guidelines": "10.0.0",
+    "stylelint": "15.9.0"
   },
   "peerDependencies": {
     "react": "0.14 || 15 || 16 || 17 || 18"
