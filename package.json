@@ -20,7 +20,6 @@
     "dev": "code . && parcel demo/index.html --open --port=1226",
     "fenix": "rimraf package-lock.json && rimraf node_modules && npm i -s --prefer-online --no-fund --no-audit && npm outdate",
     "lint": "stylelint '**/*.scss' --fix && standard --fix",
-    "pre-commit": "npm run lint",
     "prebuild": "npm run clean",
     "prepublishOnly": "npm run build"
   },
