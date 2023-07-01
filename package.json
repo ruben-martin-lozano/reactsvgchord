@@ -21,13 +21,16 @@
     "fenix": "rimraf package-lock.json && rimraf node_modules && npm i -s --prefer-online --no-fund --no-audit && npm outdate",
     "lint": "stylelint '**/*.scss' --fix && standard --fix",
     "prebuild": "npm run clean",
-    "prepublishOnly": "npm run build"
+    "precommit": "npm run lint",
+    "prepublishOnly": "npm run build",
+    "prepare": "husky install"
   },
   "dependencies": {
     "classnames": "2.3.2"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "2.9.3",
+    "husky": "8.0.0",
     "parcel": "2.9.3",
     "process": "0.11.10",
     "react": "18.2.0",
